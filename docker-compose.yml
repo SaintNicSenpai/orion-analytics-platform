@@ -1,0 +1,28 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: orion_postgres
+    environment:
+      POSTGRES_USER: orion
+      POSTGRES_PASSWORD: orion_local_pw
+      POSTGRES_DB: orion_dw
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  metabase:
+    image: metabase/metabase:latest
+    container_name: orion_metabase
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+    environment:
+      MB_DB_FILE: /metabase-data/metabase.db
+    volumes:
+      - metabase_data:/metabase-data
+
+volumes:
+  postgres_data:
+  metabase_data:

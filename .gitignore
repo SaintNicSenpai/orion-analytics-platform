@@ -1,0 +1,12 @@
+.venv/
+target/
+dbt_packages/
+logs/
+.env
+profiles.yml
+
+# dbt
+orion_dbt/logs/
+orion_dbt/target/
+orion_dbt/dbt_packages/
+orion_dbt/.user.yml

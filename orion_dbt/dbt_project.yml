@@ -1,0 +1,11 @@
+name: 'orion_dbt'
+version: '1.0.0'
+profile: 'orion'
+model-paths: ["models"]
+seed-paths: ["seeds"]
+models:
+  orion_dbt:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table

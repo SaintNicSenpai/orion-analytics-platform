@@ -1,0 +1,9 @@
+version: 2
+sources:
+  - name: raw
+    schema: public
+    tables:
+      - name: raw_zendesk
+      - name: raw_intercom
+      - name: raw_zoho_agents
+      - name: raw_sla_targets
