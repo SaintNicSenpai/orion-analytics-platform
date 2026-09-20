@@ -15,6 +15,9 @@ targets as (
 agents as (
     select agent_key, agent_name, zendesk_agent_id, intercom_admin_id
     from {{ ref('dim_agent') }}
+),
+dates as (
+    select * from {{ ref('dim_date') }}
 )
 select
     u.contact_id,
@@ -23,6 +26,14 @@ select
     u.channel,
     u.created_at,
     u.created_at::date              as contact_date,
+    d.year,
+    d.quarter_name,
+    d.month_num,
+    d.month_name,
+    d.year_month,
+    d.year_month_label,
+    d.week_num,
+    d.week_day_name,
     u.status,
     u.answer_seconds,
     t.answer_target_sec,
@@ -39,3 +50,4 @@ left join targets t on u.campaign_id = t.campaign_id
 left join agents a
     on (u.source_system = 'zendesk'  and u.source_agent_id = a.zendesk_agent_id)
     or (u.source_system = 'intercom' and u.source_agent_id = a.intercom_admin_id)
+left join dates d on u.created_at::date = d.date_day
