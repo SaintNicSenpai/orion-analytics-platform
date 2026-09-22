@@ -58,7 +58,7 @@ python generate_data.py
 python load_to_postgres.py
 
 # 4. Build the dbt models
-cd <dbt_project_dir>
+cd <orion_dbt>
 export DBT_PROFILES_DIR=$(pwd)
 dbt run
 
