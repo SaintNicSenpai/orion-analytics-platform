@@ -11,3 +11,4 @@ orion_dbt/target/
 orion_dbt/dbt_packages/
 orion_dbt/.user.yml
 .vscode/
+raw/
